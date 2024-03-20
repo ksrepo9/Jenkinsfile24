@@ -1,0 +1,38 @@
+pipeline {
+    agent { node 'ansible' }       
+    
+	tools {
+	  maven 'Maven 3.9.6'
+	}
+   }
+
+    stages {
+        stage('Git Clone') {
+            steps {
+                git credentialsId: 'git', url: 'https://github.com/ksrepo9/ks.git'
+            }
+			}
+	    stage('List') {
+		    steps {
+			    sh 'ls -l'
+			}
+			}		
+		stage('Validate') {
+		    steps {
+			    sh 'mvn validate'
+			}
+			}
+        stage('Compile') {
+		    steps {
+			    sh 'mvn compile'
+			}
+			}	
+        stage('Test') {
+		    steps {
+			    sh 'mvn test'
+			}
+			}		
+        			
+        			
+        }
+}
