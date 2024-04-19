@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Git Clone') {
             steps {
-              git branch: 'v1', credentialsId: 'git', url: 'https://github.com/ksrepo9/ks.git'
+              git branch: 'master', credentialsId: 'git', url: 'https://github.com/ksrepo9/ks.git'
             }
 			}
 		stage('Clean') {
