@@ -12,6 +12,11 @@ pipeline {
               git branch: 'v1', credentialsId: 'git', url: 'https://github.com/ksrepo9/ks.git'
             }
 			}
+		stage('Clean') {
+		    steps {
+			    sh 'mvn clean'
+			}
+			}	
 	    stage('List') {
 		    steps {
 			    sh 'ls -l'
